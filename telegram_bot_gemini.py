@@ -1,7 +1,8 @@
 import os
 import json
 import google.generativeai as genai
-import PyPDF2
+import pypdf
+
 import io
 import asyncio
 
@@ -32,7 +33,7 @@ Doimo o'zbek tilida javob ber. Qisqa, aniq va foydali bo'l."""
 # PDF DAN MATN OLISH
 # ==========================================
 def extract_text_from_pdf(pdf_bytes: bytes) -> str:
-    reader = PyPDF2.PdfReader(io.BytesIO(pdf_bytes))
+    reader =pypdf.PdfReader(io.BytesIO(pdf_bytes))
     text = ""
     for page in reader.pages:
         text += page.extract_text() + "\n"
