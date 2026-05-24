@@ -1,9 +1,13 @@
 import os
 import json
 import google.generativeai as genai
-import pypdf
+def extract_text_from_pdf(pdf_bytes: bytes) -> str:
+    try:
+        text = pdf_bytes.decode('utf-8', errors='ignore')
+        return text[:8000]
+    except:
+        return pdf_bytes.decode('latin-1', errors='ignore')[:8000]
 
-import io
 import asyncio
 
 from telegram import Update, Poll
